@@ -8,3 +8,7 @@
 - mvn package
 - apt-get install tomcat9
 - cp -rvf target/hello-world-0.0.1-SNAPSHOT.war /var/lib/tomcat9/webapps/app.war
+
+
+# jenkins tools link
+https://www.jenkins.io/doc/book/pipeline/syntax/#tools
