@@ -25,7 +25,7 @@ pipeline{
         }
         stage("Deploy on prod"){
             steps{
-                deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '945e6e91-7a93-449c-88a2-f22547b71e47', path: '', url: 'http://http://52.66.93.83:8080')], contextPath: '/app-prod', war: '**/*.war'
+                deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '945e6e91-7a93-449c-88a2-f22547b71e47', path: '', url: 'http://52.66.93.83:8080')], contextPath: '/app-prod', war: '**/*.war'
             }
         }
     }
