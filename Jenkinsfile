@@ -19,24 +19,24 @@ pipeline{
         }
         stage("deploy on test"){
             steps{
-                deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '945e6e91-7a93-449c-88a2-f22547b71e47', path: '', url: 'http://43.204.145.83:8081')], contextPath: '/app', war: '**/*.war'
+                deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'tomcat-deployer', path: '', url: 'http://3.110.103.160:8080/')], contextPath: '/app', war: '**/*.war'
                 echo "Deploying on testing server"
             }
         }
-        stage("Deploy on stage"){
-            steps{
-                deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '945e6e91-7a93-449c-88a2-f22547b71e47', path: '', url: 'http://52.66.93.83:8080')], contextPath: '/app', war: '**/*.war'
-            }
-        }
-        stage("Deploy on prod"){
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-            }
-            steps{
-                deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '945e6e91-7a93-449c-88a2-f22547b71e47', path: '', url: 'http://13.235.246.4:8080')], contextPath: '/app', war: '**/*.war'
-            }
-        }
+        // stage("Deploy on stage"){
+        //     steps{
+        //         deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '945e6e91-7a93-449c-88a2-f22547b71e47', path: '', url: 'http://52.66.93.83:8080')], contextPath: '/app', war: '**/*.war'
+        //     }
+        // }
+        // stage("Deploy on prod"){
+        //     input {
+        //         message "Should we continue?"
+        //         ok "Yes, we should."
+        //     }
+        //     steps{
+        //         deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '945e6e91-7a93-449c-88a2-f22547b71e47', path: '', url: 'http://13.235.246.4:8080')], contextPath: '/app', war: '**/*.war'
+        //     }
+        // }
     }
     post{
         always{
