@@ -8,7 +8,7 @@ pipeline{
             steps{
                 sh 'mvn --version'
                 sh 'mvn test'
-                echo "Testing is done"
+                slackSend channel: 'tomcat-app', message: 'Job started'
             }
         }
         stage("build"){
@@ -44,9 +44,11 @@ pipeline{
         }
         success{
             echo "========pipeline executed successfully ========"
+            slackSend channel: 'tomcat-app', message: 'Job Success'
         }
         failure{
             echo "========pipeline execution failed========"
+            slackSend channel: 'tomcat-app', message: 'Job Failed'
         }
     }
 }
